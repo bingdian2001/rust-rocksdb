@@ -23,7 +23,7 @@ use cmake::Config;
 fn main() {
     let mut build = build_rocksdb();
 
-    build.cpp(true).file("crocksdb/c.cc");
+    build.cpp(true).flag_if_supported("-fno-rtti").file("crocksdb/c.cc");
     if !cfg!(target_os = "windows") {
         build.flag("-std=c++11");
     }
